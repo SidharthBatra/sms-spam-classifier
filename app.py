@@ -10,7 +10,6 @@ import os
 nltk.download('punkt')
 nltk.download('punkt_tab')
 nltk.download('stopwords')
-st.write("hello")
 ps = PorterStemmer()   
 
 
