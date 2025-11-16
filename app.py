@@ -4,13 +4,21 @@ import nltk
 from nltk.corpus import stopwords
 import string
 from nltk.stem.porter import PorterStemmer
+import os
 
 # Download NLTK resources (runs only the first time)
 nltk.download('punkt')
 nltk.download('punkt_tab')
-nltk.download('stopwords')
+
 st.write("hello")
-ps = PorterStemmer()    
+ps = PorterStemmer()   
+nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
+os.makedirs(nltk_data_dir, exist_ok=True)
+
+nltk.download('stopwords', download_dir=nltk_data_dir)
+
+# Point stopwords to the custom location
+stopwords.words = lambda lang='english': stopwords.words(lang, root=nltk_data_dir)
 
 st.title("📢 Email / SMS Spam Classifier")
 
